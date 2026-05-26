@@ -1,12 +1,13 @@
 package carpet_extension;
 
-import carpet.settings.ParsedRule;
-import carpet.settings.Rule;
-import carpet.settings.Validator;
+import carpet.api.settings.CarpetRule;
+import carpet.api.settings.Rule;
+import carpet.api.settings.Validator;
+import carpet.api.settings.Validators;
 import carpet.utils.Messenger;
-import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.commands.CommandSourceStack;
 
-import static carpet.settings.RuleCategory.CREATIVE;
+import static carpet.api.settings.RuleCategory.CREATIVE;
 
 /**
  * Here is your example Settings class you can plug to use carpetmod /carpet settings command
@@ -19,7 +20,7 @@ public class ExampleSimpleSettings
     private static class CheckValue extends Validator<Integer>
     {
         @Override
-        public Integer validate(ServerCommandSource source, ParsedRule<Integer> currentRule, Integer newValue, String typedString)
+        public Integer validate(CommandSourceStack source, CarpetRule<Integer> currentRule, Integer newValue, String typedString)
         {
             Messenger.m(source, "rb Congrats, you just changed a setting to "+newValue);
             return newValue < 20000000 ? newValue : null;
@@ -30,18 +31,17 @@ public class ExampleSimpleSettings
      *  Simple numeric setting, no use otherwise
      */
     @Rule(
-            desc = "Example numerical setting",
             options = {"32768", "250000", "1000000"},
-            validate = {Validator.NONNEGATIVE_NUMBER.class, CheckValue.class},
-            category = {CREATIVE, "examplemod"}
+            validators = {Validators.NonNegativeNumber.class, CheckValue.class},
+            categories = {CREATIVE, "examplemod"}
     )
     public static int uselessNumericalSetting = 32768;
 
 
     /**
-     * You can define your own catergories. It makes sense to create new category for all settings in your mod.
+     * You can define your own categories. It makes sense to create new category for all settings in your mod.
      */
-    @Rule(desc="makes mobs dance Makarena", category = {"fun", "examplemod"})
+    @Rule(categories = {"fun", "examplemod"})
     public static boolean makarena = false;
 
 }

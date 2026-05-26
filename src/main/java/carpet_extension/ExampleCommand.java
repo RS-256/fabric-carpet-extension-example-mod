@@ -2,13 +2,13 @@ package carpet_extension;
 
 import carpet.utils.Messenger;
 import com.mojang.brigadier.CommandDispatcher;
-import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.commands.CommandSourceStack;
 
-import static net.minecraft.server.command.CommandManager.literal;
+import static net.minecraft.commands.Commands.literal;
 
 public class ExampleCommand
 {
-    public static void register(CommandDispatcher<ServerCommandSource> dispatcher)
+    public static void register(CommandDispatcher<CommandSourceStack> dispatcher)
     {
         dispatcher.register(literal("testcommand").
                 then(literal("first").
@@ -21,7 +21,7 @@ public class ExampleCommand
 
     }
 
-    private static int listSettings(ServerCommandSource source)
+    private static int listSettings(CommandSourceStack source)
     {
         Messenger.m(source, "w Here is all the settings we manage:");
         Messenger.m(source, "w Own stuff:");

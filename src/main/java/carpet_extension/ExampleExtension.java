@@ -2,18 +2,19 @@ package carpet_extension;
 
 import carpet.CarpetExtension;
 import carpet.CarpetServer;
-import carpet.settings.SettingsManager;
-import carpet.utils.Messenger;
+import carpet.api.settings.SettingsManager;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import net.minecraft.commands.CommandBuildContext;
+import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.command.ServerCommandSource;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.level.ServerPlayer;
+
+import java.util.Map;
 
 public class ExampleExtension implements CarpetExtension
 {
     public static void noop() { }
-    private static SettingsManager mySettingManager;
+    private static final SettingsManager mySettingManager;
     static
     {
         mySettingManager = new SettingsManager("1.0","examplemod","Example Mod");
@@ -27,30 +28,6 @@ public class ExampleExtension implements CarpetExtension
         CarpetServer.settingsManager.parseSettingsClass(ExampleSimpleSettings.class);
         // Lets have our own settings class independent from carpet.conf
         mySettingManager.parseSettingsClass(ExampleOwnSettings.class);
-
-        // set-up a snooper to observe how rules are changing in carpet
-        CarpetServer.settingsManager.addRuleObserver( (serverCommandSource, currentRuleState, originalUserTest) ->
-        {
-            if (currentRuleState.categories.contains("examplemod"))
-            {
-                Messenger.m(
-                        serverCommandSource,
-                        "gi Psssst... make sure not to change not to touch original carpet rules"
-                );
-                // obviously you can change original carpet rules
-            }
-            else
-            {
-                try
-                {
-                    Messenger.print_server_message(
-                            serverCommandSource.getMinecraftServer(),
-                            "Ehlo everybody, "+serverCommandSource.getPlayer().getName().getString()+" is cheating..."
-                    );
-                }
-                catch (CommandSyntaxException ignored) { }
-            }
-        });
     }
 
     @Override
@@ -67,26 +44,39 @@ public class ExampleExtension implements CarpetExtension
     }
 
     @Override
-    public void registerCommands(CommandDispatcher<ServerCommandSource> dispatcher)
+    public void registerCommands(CommandDispatcher<CommandSourceStack> dispatcher, CommandBuildContext commandBuildContext)
     {
         ExampleCommand.register(dispatcher);
     }
 
     @Override
-    public SettingsManager customSettingsManager()
+    public SettingsManager extensionSettingsManager()
     {
         // this will ensure that our settings are loaded properly when world loads
         return mySettingManager;
     }
 
     @Override
-    public void onPlayerLoggedIn(ServerPlayerEntity player)
+    public Map<String, String> canHasTranslations(String lang)
+    {
+        return Map.of(
+                "carpet.rule.uselessNumericalSetting.desc", "A simple numeric setting used by the example extension.",
+                "carpet.rule.makarena.desc", "Toggles the example makarena rule.",
+                "examplemod.rule.intSetting.desc", "A simple integer setting used by the example extension.",
+                "examplemod.rule.stringSetting.desc", "A simple string setting used by the example extension.",
+                "examplemod.rule.optionSetting.desc", "Selects one of the example option values.",
+                "examplemod.rule.boolSetting.desc", "Toggles the example boolean setting."
+        );
+    }
+
+    @Override
+    public void onPlayerLoggedIn(ServerPlayer player)
     {
         //
     }
 
     @Override
-    public void onPlayerLoggedOut(ServerPlayerEntity player)
+    public void onPlayerLoggedOut(ServerPlayer player)
     {
         //
     }

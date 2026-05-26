@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "carpet-extension",
-  "version": "1.4.6",
+  "id": "${id}",
+  "version": "${version}",
 
-  "name": "Example Carpet Extension Mod",
+  "name": "${name}",
   "description": "This is an example description! Tell everyone what your mod is about!",
   "authors": [
     "Me!"
@@ -26,8 +26,8 @@
   ],
 
   "depends": {
-    "minecraft": "1.16.x",
-    "fabricloader": ">=0.4.0",
+    "minecraft": "${minecraft}",
+    "fabricloader": "${fabricLoader}",
     "carpet": "*"
   },
   "suggests": {

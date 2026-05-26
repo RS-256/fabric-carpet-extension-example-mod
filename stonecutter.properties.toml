@@ -1,0 +1,27 @@
+# Mod metadata shared across all versions.
+mod.id = "carpet-extension"
+mod.name = "Example Carpet Extension Mod"
+mod.version = "1.4.6"
+mod.group = "carpet-extension"
+
+deps.fabric_loader = "0.9.0+build.204"
+build.fabric_loader = ">=0.4.0"
+
+publish.modrinth = "XXXXXXXX"
+publish.curseforge = "XXXXXXXX"
+
+["1.21.11"]
+deps.fabric_loader = "0.18.1"
+build.fabric_loader = ">=0.18.1"
+deps.carpet = "1.21.11-1.4.194+v260107"
+mod.mc_dep = "1.21.11"
+mod.mc_title = "1.21.11"
+mod.mc_targets = "1.21.11"
+
+["26.1.2"]
+deps.fabric_loader = "0.19.2"
+build.fabric_loader = ">=0.19.2"
+deps.carpet = "26.1+v260401"
+mod.mc_dep = "26.1.2"
+mod.mc_title = "26.1.2"
+mod.mc_targets = "26.1.2"
