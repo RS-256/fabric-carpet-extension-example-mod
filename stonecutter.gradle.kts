@@ -9,7 +9,7 @@ stonecutter active "26.1.2"
 stonecutter parameters {
     swaps["mod_version"] = "\"${property("mod.version")}\";"
     swaps["minecraft"] = "\"${node.metadata.version}\";"
-    constants["release"] = property("mod.id") != "carpet-extension"
+    constants["release"] = property("mod.id") != "template"
 }
 
 tasks.register("runClientCurrentVersion") {

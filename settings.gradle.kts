@@ -22,4 +22,4 @@ stonecutter {
     }
 }
 
-rootProject.name = "fabric-carpet-extension-example-mod"
+rootProject.name = "template-mod"

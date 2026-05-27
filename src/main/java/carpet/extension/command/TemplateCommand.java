@@ -1,12 +1,13 @@
-package carpet_extension;
+package carpet.extension.command;
 
+import carpet.extension.settings.TemplateSettings;
 import carpet.utils.Messenger;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.commands.CommandSourceStack;
 
 import static net.minecraft.commands.Commands.literal;
 
-public class ExampleCommand
+public class TemplateCommand
 {
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher)
     {
@@ -25,13 +26,13 @@ public class ExampleCommand
     {
         Messenger.m(source, "w Here is all the settings we manage:");
         Messenger.m(source, "w Own stuff:");
-        Messenger.m(source, "w  - boolean: "+ExampleOwnSettings.boolSetting);
-        Messenger.m(source, "w  - string: "+ExampleOwnSettings.stringSetting);
-        Messenger.m(source, "w  - int: "+ExampleOwnSettings.intSetting);
-        Messenger.m(source, "w  - enum: "+ExampleOwnSettings.optionSetting);
+        Messenger.m(source, "w  - boolean: "+ TemplateSettings.Own.boolSetting);
+        Messenger.m(source, "w  - string: "+ TemplateSettings.Own.stringSetting);
+        Messenger.m(source, "w  - int: "+ TemplateSettings.Own.intSetting);
+        Messenger.m(source, "w  - enum: "+ TemplateSettings.Own.optionSetting);
         Messenger.m(source, "w Carpet Managed:");
-        Messenger.m(source, "w  - makarena: "+ExampleSimpleSettings.makarena);
-        Messenger.m(source, "w  - useless numerical setting: "+ExampleSimpleSettings.uselessNumericalSetting);
+        Messenger.m(source, "w  - makarena: "+ TemplateSettings.Carpet.makarena);
+        Messenger.m(source, "w  - useless numerical setting: "+ TemplateSettings.Carpet.uselessNumericalSetting);
         return 1;
     }
 }

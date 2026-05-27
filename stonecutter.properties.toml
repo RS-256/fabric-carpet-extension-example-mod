@@ -1,8 +1,8 @@
 # Mod metadata shared across all versions.
-mod.id = "carpet-extension"
-mod.name = "Example Carpet Extension Mod"
+mod.id = "template"
+mod.name = "TemplateMod"
 mod.version = "1.4.6"
-mod.group = "carpet-extension"
+mod.group = "template"
 
 deps.fabric_loader = "0.9.0+build.204"
 build.fabric_loader = ">=0.4.0"
