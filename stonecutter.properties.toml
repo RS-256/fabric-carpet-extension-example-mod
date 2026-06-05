@@ -2,7 +2,7 @@
 mod.id      = "template"
 mod.name    = "Template"
 mod.version = "0.1.0"
-mod.group   = "com.example"
+mod.group   = "carpet.extension"
 
 # deps. is used dependency resolving,
 # build. is used build jar resource prosessing
