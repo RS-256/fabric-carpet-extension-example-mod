@@ -22,4 +22,4 @@ stonecutter {
     }
 }
 
-rootProject.name = "template-mod"
+rootProject.name = "carpet-template"

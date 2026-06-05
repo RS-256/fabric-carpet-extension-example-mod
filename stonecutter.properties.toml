@@ -1,27 +1,33 @@
-# Mod metadata shared across all versions.
-mod.id = "template"
-mod.name = "TemplateMod"
-mod.version = "1.4.6"
-mod.group = "template"
+# Mod metadata — shared across all versions
+mod.id      = "template"
+mod.name    = "Template"
+mod.version = "0.1.0"
+mod.group   = "com.example"
 
-deps.fabric_loader = "0.9.0+build.204"
-build.fabric_loader = ">=0.4.0"
+# deps. is used dependency resolving,
+# build. is used build jar resource prosessing
+deps.fabric_loader  = "0.19.2"
+build.fabric_loader = ">=0.19.2"
 
-publish.modrinth = "XXXXXXXX"
+build.fabric_api    = "*"
+
+
+build.carpet    = "*"
+
+publish.modrinth   = "XXXXXXXX"
 publish.curseforge = "XXXXXXXX"
 
 ["1.21.11"]
-deps.fabric_loader = "0.18.1"
-build.fabric_loader = ">=0.18.1"
-deps.carpet = "1.21.11-1.4.194+v260107"
-mod.mc_dep = "1.21.11"
-mod.mc_title = "1.21.11"
-mod.mc_targets = "1.21.11"
+deps.fabric_api = "0.141.3+1.21.11"
+mod.mc_dep      = "1.21.11"
+mod.mc_title    = "1.21.11"
+mod.mc_targets  = "1.21.11"
+# build.fabric_api = "0.141.3+1.21.11"     # additional if needed
+deps.carpet     = "1.21.11-1.4.194+v260107"
 
 ["26.1.2"]
-deps.fabric_loader = "0.19.2"
-build.fabric_loader = ">=0.19.2"
-deps.carpet = "26.1+v260401"
-mod.mc_dep = "26.1.2"
-mod.mc_title = "26.1.2"
-mod.mc_targets = "26.1.2"
+deps.fabric_api = "0.150.0+26.1.2"
+mod.mc_dep      = "26.1.2"
+mod.mc_title    = "26.1.2"
+mod.mc_targets  = "26.1.2"
+deps.carpet     = "26.1+v260401"

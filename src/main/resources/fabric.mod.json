@@ -9,8 +9,7 @@
     "Me!"
   ],
   "contact": {
-    "homepage": "https://web.me/",
-    "sources": "https://github.com/gnembon/fabric-carpet-extension-example-mod"
+    "sources": "https://github.com/RS-256/fabric-carpet-extension-example-mod"
   },
 
   "license": "CC0-1.0",
@@ -25,12 +24,11 @@
     "template.mixins.json"
   ],
 
+  "accessWidener": "${accesswidener}",
   "depends": {
     "minecraft": "${minecraft}",
     "fabricloader": "${fabricLoader}",
-    "carpet": "*"
-  },
-  "suggests": {
-    "flamingo": "*"
+    "${fabricApiKey}": "${fabricAPI}",
+    "carpet": "${carpet}"
   }
 }
